@@ -38,15 +38,15 @@ For this assignment, we had the opportunity to choose the tools that would be ne
 
 - We can start analyzing the data by looking how many accounts Planoly had active during Q1 and Q2 of 2017. Looking at the trend of Q1 we can say that if we had the rest of the data source for 2017 (we only have information until June 1, 2017), the number of accounts on Q2 would most likely stay short of surpassing the total of Q1. This could be caused by various situations or reasons, for example: deactivated accounts, social media platforms (Instagram/Pinterest) downtime or technical issues.
 
-![Quarter Review](../Planoly%20Challenge/Visualization/QuarterBarChart.png)
+![Quarter Review](./Visualization/QuarterBarChart.png)
 
 - Now we want to see how Planoly is doing on a monthly basis gaining new accounts. To consider a new account, we have to keep in mind that it would be the first date it had activity on the platform. The first thing to notice is January was the month with the most new accounts and a consistency of gaining an average of 3,603 through February and May. To understand how January had so many new accounts, we would have to get more data and analyze to identify what patterns were most used by the users. Consider:
    - What was the most used service from our platform?
    - Where there any special events during this month that would be important for our users? Besides well known days for sales or announcements.
    - How can we help them to explore other services offered in our platform?
 
-![Monthly Growth](../Planoly%20Challenge/Visualization/AccountGrowthGraph.png)
+![Monthly Growth](./Visualization/AccountGrowthGraph.png)
 
 - For an extra analysis, we decided to do a visualization of the amount of tasks done every month. Were we can pretty quickly identify that the months of March and May had the most activity. These could be for several reasons considering the most of the users are businesses. For the month of March we have the beginning of Spring which is usually a perfect time for engagement and publishing new content for sales or new collections. Then for the month of May we have ‘Cinco de Mayo’ and Mother’s Day which are also perfect days for businesses to grow engagement and announce sales or any type of special events.
   
-![Monthly Tasks](../Planoly%20Challenge/Visualization/MonthlyBarChart.png)
+![Monthly Tasks](./Visualization/MonthlyBarChart.png)
