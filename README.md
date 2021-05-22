@@ -1,8 +1,6 @@
 # Analytics Home Assignment
 
 ## Table of Contents
-- [Analytics Home Assignment](#analytics-home-assignment)
-  - [Table of Contents](#table-of-contents)
   - [Assignment Instructions](#assignment-instructions)
   - [Tools](#tools)
   - [Data Analysis](#data-analysis)
