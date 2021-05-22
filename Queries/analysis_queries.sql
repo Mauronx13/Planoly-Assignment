@@ -42,13 +42,7 @@ ORDER BY account_id, date;
 
 -- 4. Add another column with the moving average of tasks run in the last 7 days of each account.
 
--- Alter table to include new column before running query
-ALTER TABLE summary_tasksdifference
-ADD COLUMN "7day_moving_average" INT;
-
--- Fill new column with data
-INSERT INTO summary_tasksdifference (date, account_id, tasks, difference_to_previous_date, "7day_moving_average")
-SELECT date, account_id, tasks, difference_to_previous_date, ROUND(AVG(tasks) OVER (PARTITION BY account_id ORDER BY account_id, date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)::DECIMAL,2) 
+SELECT date, account_id, tasks, difference_to_previous_date, ROUND(AVG(tasks) OVER (PARTITION BY account_id ORDER BY account_id, date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)::DECIMAL,2) AS "7day_moving_average"
 FROM summary_tasksdifference
 ORDER BY account_id, date;
 
