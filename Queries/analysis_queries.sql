@@ -13,7 +13,7 @@ FROM tasks_used_da
 GROUP BY 1,2;
 
 -- Create summary table
-CREATE TABLE summary_newaccounts AS
+CREATE TABLE maponte.summary_newaccounts AS
 WITH first_day AS 
     (SELECT * FROM (SELECT date, account_id, tasks, rank() OVER (PARTITION BY account_id ORDER BY date, tasks) AS account
     FROM account_level 
@@ -28,7 +28,6 @@ GROUP BY date, account_id, tasks
 ORDER BY 1, 2 ASC;
 
 -- 3. Create a summary table at the account level. Add a column with the % difference in the number of tasks to the previous day (feel free to reuse the previous).
-
 CREATE TABLE maponte.summary_tasksdifference AS
 WITH previous_task AS  
 	(SELECT date, account_id, tasks, lag(tasks,1) OVER (PARTITION BY account_id ORDER BY date) previous
@@ -41,13 +40,12 @@ FROM previous_task
 ORDER BY account_id, date;
 
 -- 4. Add another column with the moving average of tasks run in the last 7 days of each account.
-
-SELECT date, account_id, tasks, difference_to_previous_date, ROUND(AVG(tasks) OVER (PARTITION BY account_id ORDER BY account_id, date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)::DECIMAL,2) AS "7day_moving_average"
+SELECT *, ROUND(AVG(tasks) OVER (PARTITION BY account_id ORDER BY account_id, date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)::DECIMAL,2) AS "7day_moving_average"
 FROM summary_tasksdifference
 ORDER BY account_id, date;
 
 -- 5. A lost account is an account with no tasks run on a given month. How many accounts did we lose (had no executed tasks) in February 2017?
-SELECT count(DISTINCT account_id) AS "Lost Accounts"
+SELECT COUNT(DISTINCT account_id) AS "Lost Accounts"
 FROM tasks_used_da
 WHERE sum_tasks_used = '0' 
 AND date BETWEEN '2017-02-01' AND '2017-02-28';
